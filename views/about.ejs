@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style2.css' />
+    <meta name="active-menu" content="<%= menuId %>">
+    <% include partials/headIndex %>
+</head>
+
+<body>
+    <% include partials/navbar %>
+
+        <div id="content">
+            <h1 class="display-4">
+                <%= title %>
+            </h1>
+            <p class="lead">No hay nada aquí :'(</p>
+            <hr class="my-4">
+        </div>
+
+
+        <% include partials/script %>
+</body>
+
+</html>

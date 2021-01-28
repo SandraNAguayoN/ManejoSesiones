@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registro</title>
+  <link rel='stylesheet' href='/stylesheets/signup.css' />
+  <% include partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-6 mx-auto">
+      <div class="card mt-5">
+        <div class="card-body">
+          <br>
+          <h1 class="text-center"><span><i class="fa fa-sign-in"></i></span>&nbsp;Registrarse
+          </h1>
+
+          <br>
+          <%- include('partials/mensajes'); %>
+
+            <br>
+            <form action="/users/signup" method="POST">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                  placeholder="Email" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                  value="<%= typeof password != 'undefined' ? password : '' %>" required>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Confirmar Contraseña</label>
+                <input type="password" class="form-control" id="password2" name="password2" placeholder="Password"
+                  value="<%= typeof password2 != 'undefined' ? password2 : '' %>" required>
+              </div>
+              <br>
+              <div align="center">
+                <button type="submit" class="btn btn-primary">Registrarme</button>
+              </div>
+              <br>
+              <div align="center">
+                <small>¿Ya tienes una cuenta? <a href="login">Iniciar Sesión</a></small><br>
+                <small>O ve al <a href="/">Inicio</a></small>
+              </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</body>
+
+</html>

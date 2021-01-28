@@ -1,0 +1,47 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url(/images/about.jpg); 
+    background-size: 1000px;
+    background-size: 500px;
+    background-size: 500px;
+    background-size: 1400px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: whitesmoke;
+  
+  }
+  
+  a {
+    color: #00B7FF;
+  }
+
+  #content {
+    color:whitesmoke;
+    padding: 50px;
+  }
+  
+  
+  /*Toggler de menu*/
+  .bg-3 {
+    background-color: #ffffff;
+    color: #555555;
+   }
+   .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+   }
+   .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+   }
+   .navbar-nav li a:hover {
+    color: #1abc9c !important;
+   }
+   .active>a {
+    color: #1abc9c !important;
+   }

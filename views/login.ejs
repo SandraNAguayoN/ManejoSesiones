@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Inicio de Sesión
+  </title>
+  <link rel='stylesheet' href='/stylesheets/login.css' />
+  <% include partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-6 mx-auto">
+      <div class="card mt-5">
+        <div class="card-body">
+          <br>
+          <h1 class="text-center"><span><i class="fa fa-user-circle"></i></span>&nbsp;Iniciar Sesión
+          </h1>
+
+          <br>
+          <%- include('partials/mensajes'); %>
+
+            <br>
+            <form action="/users/login" method="POST">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                  placeholder="Email" required>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                  required>
+              </div>
+              <br>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="recordarme" name="recordarme">
+                <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+              </div>
+              <br>
+              <div align="center">
+                <button type="submit" class="btn btn-dark">Iniciar Sesión</button>
+              </div>
+              <br>
+              <div align="center">
+                <small>¿Aún no tienes una cuenta? <a href="signup">Registrarme</a></small><br>
+                <small>O ve al <a href="/">Inicio</a></small>
+              </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</body>
+
+</html>

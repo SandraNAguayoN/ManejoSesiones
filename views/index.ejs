@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="active-menu" content="<%= menuId %>">
+  <% include partials/headIndex %>
+</head>
+
+<body>
+  <% include partials/navbar %>
+    <div class="jumbotron" id="contenido">
+
+      <h1 class="display-4">
+        <%= title %>
+      </h1>
+      <p class="lead">Bienvenido(a)</p>
+      <hr class="my-4">
+      <%- include('partials/mensajes'); %>
+
+        <div class="container"><br>
+          <div class="container">
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <br>
+                  <div align="center">
+                    <small>Registrate para formar parte de este sitio!</small>
+                    <button id="signup" class="btn-grad"><a href="/signup"
+                        style="text-decoration:none; color: white;">Registrarse</a></button>
+                  </div>
+                  <hr>
+                  <div align="center">
+                    <small>O si ya tienes cuenta</small>
+                    <button id="login" class="btn-grad"><a href="/login"
+                        style="text-decoration:none; color: white;">Iniciar Sesión</a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <% include partials/script %>
+</body>
+
+</html>
