@@ -1,24 +1,28 @@
 'use strict';
 
+var fs = require('fs');
+var https = require('https');
 var createError = require('http-errors');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var express = require('express');
 const flash = require('connect-flash');
 const passport = require('passport');
-
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 
-require("./config/passport")(passport)
+var options = {
+    key: fs.readFileSync(__dirname + '/crt/nodejs.test/server.key'),
+    cert: fs.readFileSync(__dirname + '/crt/nodejs.test/server.crt')
+};
 
-//Configuración de Mongoose
-var dbConfig = require('./config/database.js');
+require("./config/passport")(passport);
+
+//Configuración de Mongoose para conexión a la base de datos MongoDB
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://test:test@cluster0.lnmez.mongodb.net/Sesiones?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Conectado...'))
@@ -28,26 +32,27 @@ var app = express();
 app.use(session({ secret: 'secret', saveUninitialized: true, resave: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-//use flash
+
+//Configuración de flash
 app.use(flash());
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
     next();
-})
+});
 
-// Configurando Passport
-
+// Configurando de Passport
 var expressSession = require('express-session');
 app.use(expressSession({ secret: 'mySecretKey' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Parsea manejo de datos en cuerpo de la solicitud
+//Confuguración de BodyParser para manejo de datos en cuerpo de la solicitud
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// view engine setup
+
+//Configuración de las vistas
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -77,4 +82,7 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
+https.createServer(options, app).listen(8000);
+
 module.exports = app;
+
